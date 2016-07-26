@@ -1,0 +1,31 @@
+Exercícios c/ Vetores e Matrizes (onde se lê “algoritmo”, leia-se “programa em C” !! ) 
+
+1. Elaborar um algoritmo que leia um conjunto de 15 valores e os coloca em 2 vetores conforme estes valores forem pares ou ímpares. Terminada a leitura escrever o conteúdo dos dois vetores.
+
+2. Faça um algoritmo que leia um vetor N[20]. A seguir, encontre o menor elemento do vetor N e a sua posição dentro do vetor, mostrando: “O menor elemento de N é”, M, “e sua posição dentro do vetor é:”,P.
+
+3. Escreva um algoritmo que leia dois vetores de 10 posições e faça a multiplicação dos elementos de mesmo índice, colocando o resultado em um terceiro vetor. Mostre o vetor resultante.
+
+4. Faça um algoritmo que leia um vetor K[30]. Troque a seguir, todos os elementos de ordem ímpar do vetor com os elementos de ordem par imediatamente posteriores.
+
+5. Escreva um algoritmo que leia e mostre um vetor de 20 números. A seguir, conte quantos valores pares existem no vetor.
+
+6. Escreva um algoritmo que leia 20 valores para um vetor de 20 posições. Mostre depois somente os positivos.
+
+7. Escreva um que leia um vetor G de 10 elementos caracter que representa o gabarito de uma prova. A seguir, para cada um dos 50 alunos da turma, leia o vetor de respostas (R) do aluno e conte o número de acertos. Mostre o nº de acertos do aluno e uma mensagem APROVADO, se a nota for maior ou igual a 6; e mostre uma mensagem de REPROVADO, caso contrário.
+
+8. Escrever um algoritmo que gera os 30 primeiros números primos a partir de 100 e os armazena em um vetor de X [30] escrevendo, no final, o vetor X.
+
+9. Escrever um algoritmo que lê 2 vetores de tamanho 10. Crie, a seguir, um vetor S de 20 posições que contenha os elementos dos outros 2 vetores em ordem crescente.
+
+10. Escrever um algoritmo que lê um vetor X(20). Escreva, a seguir, cada um dos valores distintos que aparecem em X dizendo quantas vezes cada valor aparece em X.
+
+11. Faça um algoritmo que leia dois vetores de 20 posições de inteiros. A seguir, troque o 1º elemento de A com o 20º de B, o 2º de A com o 19º de B, assim por diante, até trocar o 20º de A com o 1º de B. Mostre os vetores antes e depois da troca.
+
+12. Faça um algoritmo que leia um vetor A[10]. Preencha então um vetor B[10] com o fatorial de cada valor de A respeitando as posições, caso o referido valor for positivo ou nulo. Deixe os valores negativos intactos. Mostre o vetor B.
+
+13. Escreva um algoritmo que leia um número inteiro A e uma matriz V 5x5 de números. Conte quantos valores iguais a A estão na matriz.
+
+14. Escrever um algoritmo que lê uma matriz M(5,5) e cria 2 vetores SL(5) e SC(5) que contenham, respectivamente, as somas das linhas e das colunas de M. Escrever a matriz e os vetores criados.
+
+15. Faça um algoritmo que calcule a média dos elementos da diagonal principal de uma matriz 5x5 de números. 46. Calcule também a média dos elementos da diagonal secundária.

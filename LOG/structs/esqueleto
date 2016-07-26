@@ -1,0 +1,8 @@
+//Copyright (c) 2016, Kauê Rodrigues
+
+#include <stdio.h>
+
+int main()
+{
+    return 0;
+}
