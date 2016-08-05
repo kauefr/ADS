@@ -1,0 +1,27 @@
+1 - Banco de Dados é um programa que armazena de maneira organizada dados de determinado domínio.
+Sistema Gerenciador de Banco de Dados é um programa usado para criar e manter o Banco de Dados.
+Sistema de Banco de Dados é o conjunto de Banco de Dados, SGBD, usuários e hardware.
+
+2 - Aumenta a praticidade e diminue os problemas de integridade e segurança. Não é recomendado o uso de um SGBD se os dados não possuem uma estrutura lógica.
+
+3 - Monitorar o uso do BD e autorizar o acesso ao mesmo.
+
+4 - Redundância, consistência, segurança e padronização.
+
+5 - Nível de visão: descreve parte do BD. Nível lógico: descreve quais dados estão no BD. Nível físico: descreve como os dados estão armazenados.
+
+6 - Esquema é o projeto do BD, inalterado. Instância é o conjunto de dados de um BD num determinado momento.
+
+7 - DDL é usada para criar o BD e DML é usada pelos usuários do BD para acessaar os dados.
+
+8 - 
+
+9 - 
+
+10 - 
+
+11 - 
+
+12 - 
+
+13 - 
