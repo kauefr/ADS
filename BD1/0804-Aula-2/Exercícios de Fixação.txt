@@ -1,4 +1,4 @@
-1 - Banco de Dados é um programa que armazena de maneira organizada dados de determinado domínio.
+1 - Banco de Dados é um conjunto de dados interrelacionados de determinado domínio.
 Sistema Gerenciador de Banco de Dados é um programa usado para criar e manter o Banco de Dados.
 Sistema de Banco de Dados é o conjunto de Banco de Dados, SGBD, usuários e hardware.
 
@@ -14,14 +14,17 @@ Sistema de Banco de Dados é o conjunto de Banco de Dados, SGBD, usuários e har
 
 7 - DDL é usada para criar o BD e DML é usada pelos usuários do BD para acessaar os dados.
 
-8 - 
+8 - O modelo relacional é um modelo lógico que utiliza tabelas para armazenar os dados, por exemplo, uma tabela clientes, que possui as colunas número da conta e nome e na qual cada linha corresponde a um cliente diferente.
 
-9 - 
+9 - Superchave é um conjunto de atributos que identifica uma entidade univocamente, chave é o menor subconjunto da superchave.
+Se existirem várias chaves, cada uma delas é chamada de chave candidata e uma delas é escolhida para ser a chave primária.
 
-10 - 
+10 - Quando uma entidade pode possuir mais de um objeto do mesmo tipo, deve-se usar um conjunto de entidades para descrever esse objeto.
 
-11 - 
+11 - Quando a entidade existe independente de outras entidades do BD, pode-se utilizar um conjunto de entidades.
+Quando ela for dependente de outras entidades, deve-se utilizar um conjunto de relacionamentos.
 
-12 - 
+12 - Uma entidade fraca é uma entidade que não possui atributos suficientes para formar uma chave primária.
+Por exemplo, uma entidade Parcela, com os atributos numero_da_parcela e valor.
 
-13 - 
+13 - Uma chave estrangeira é um campo que identifica uma linha de uma tabela através de uma chave primária de outra tabela.
