@@ -1,0 +1,10 @@
+Você é um grande mestre Pokemon?! Para provar isso desenvolva o seguinte programa:
+Cadastre 4 Pokemons para você e 4 quatro para o seu adversário, cada pokemon tem os
+seguintes atributos: nome, tipo e poder (para facilitar “tipo” pode ser inteiro).
+O usuário deve informar apenas os nomes dos pokemons, o tipo e o poder serão gerados
+aleatoriamente, o tipo pode variar entre 1,2 e 3, já o poder varia de 2500 à 12500.
+Imprima os dados de todos os pokemons, quando um pokemon tiver poder >=9000 escreva
+“Its over 9000!!”
+O programa escolhe aleatoriamente 1 pokemon do jogador e um do adversário para
+“batalhar”, vence quem tiver o poder maior poder
+*Quem não gosta de pokemon, escolha outra coisa (Star Wars, por ex.)
