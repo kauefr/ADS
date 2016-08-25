@@ -1,10 +1,12 @@
 //Copyright (c) 2016, Kauê Rodrigues
 
+//Bibliotecas
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
+//typedefs
 typedef struct _hora
 {
     int h;
@@ -13,14 +15,15 @@ typedef struct _hora
 
 typedef struct _carro
 {
-    char placa[10];
     char modelo[30];
+    char placa[10];
     hora entrada;
-    hora saida;
 } carro;
 
+//Declarações das Funções
+void leia_linha(char *buffer, int n);
 int horacmp(hora a, hora b);
-
+void print_carro(carro *vetor, int i);
 int ler_carros(carro *vetor, int qtd_de_carros);
 void mostra_quantos(carro *vetor, int qtd_de_carros);
 void lista_placas(carro *vetor, int qtd_de_carros);
@@ -28,50 +31,51 @@ void mostra_intervalo(carro *vetor, int qtd_de_carros);
 void lista_todos(carro *vetor, int qtd_de_carros);
 void encontra_carro(carro *vetor, int qtd_de_carros);
 
+//Main
 int main()
 {
     carro carros[1000];
     int qtd_de_carros = 0;
-    hora h = {1, 1};
-    carro c = {"ABC-1234", "ASTRA", h, h};
-    carros[0] = c;
-    qtd_de_carros++;
 
     char buffer[40];
     int opcao = 0;
-    while(opcao != (int) 's')
+    while(opcao != (int) 'S')
     {
         switch(opcao)
         {
-            case 'l':
+            case 'L':
                 qtd_de_carros = ler_carros(carros, qtd_de_carros);
                 break;
-            case 'm':
+            case 'M':
                 mostra_quantos(carros, qtd_de_carros);
                 break;
-            case 'p':
+            case 'P':
                 lista_placas(carros, qtd_de_carros);
                 break;
-            case 'i':
+            case 'I':
                 mostra_intervalo(carros, qtd_de_carros);
                 break;
-            case 't':
+            case 'T':
                 lista_todos(carros, qtd_de_carros);
                 break;
-            case 'e':
+            case 'E':
                 encontra_carro(carros, qtd_de_carros);
                 break;
             default:
                 break;
         }
         system("clear");
-        printf("Escolha a opcao:\n");
-        fgets(buffer, 40, stdin);
+        printf("Escolha a opcao: \n");
+        printf("(L)er Dados, (M)ostrar Quantidade, \n");
+        printf("Listar (P)lacas, Buscar por (I)ntervalo, \n");
+        printf("Listar (T)odos, (E)ncontrar por Placa, (S)air\n");
+        leia_linha(buffer, 40);
         opcao = (int)buffer[0];
     } 
     return 0;
 }
 
+//Definições das Funções
 int horacmp(hora a, hora b)
 {
     if(a.h > b.h)
@@ -93,9 +97,55 @@ int horacmp(hora a, hora b)
     return 0;
 }
 
+void leia_linha(char *buffer, int n)
+{
+    fgets(buffer, n, stdin);
+    buffer[strcspn(buffer, "\r\n")] = 0;
+    for(int i=0; i<strcspn(buffer, "\0"); i++)
+    {
+        buffer[i] = (char)toupper(buffer[i]);
+    }
+}
+
+void print_carro(carro *vetor, int i)
+{
+    printf("Carro %d:\n", i+1);
+    printf("Modelo: %s\n", vetor[i].modelo);
+    printf("Placa: %s\n", vetor[i].placa);
+    printf("Horario de Entrada: %02d:%02d\n", vetor[i].entrada.h, vetor[i].entrada.m);
+}
+
 int ler_carros(carro *vetor, int qtd_de_carros)
 {
-    return qtd_de_carros;
+    char buffer[40];
+    int opcao = 0;
+    int i = qtd_de_carros;
+    do {
+        printf("Digite o Modelo:\n");
+        leia_linha(buffer, 40);
+        buffer[29] = 0;
+        strcpy(vetor[i].modelo, buffer);
+
+        printf("Digite a Placa: \n");
+        leia_linha(buffer, 40);
+        buffer[9] = 0;
+        strcpy(vetor[i].placa, buffer);
+
+        printf("Digite a Hora de Entrada: (formato hh:mm)\n");
+        leia_linha(buffer, 40);
+        char *tmp;
+        vetor[i].entrada.h = (int) strtol(buffer, &tmp, 10);
+        vetor[i].entrada.m = (int) strtol(++tmp, NULL, 10);
+
+        i++;
+        printf("Continuar inserindo? (S)im (N)ao\n");
+        leia_linha(buffer, 40);
+        opcao = (int) buffer[0];
+    } while(opcao == (int) 'S');
+    
+    printf("Pressione Enter para continuar...\n");
+    getchar();
+    return i;
 }
 
 void mostra_quantos(carro *vetor, int qtd_de_carros)
@@ -108,21 +158,22 @@ void mostra_quantos(carro *vetor, int qtd_de_carros)
 void lista_placas(carro *vetor, int qtd_de_carros)
 {
     char m[40];
+    int total = 0;
 
     printf("Digite o modelo:\n");
-    fgets(m, 40, stdin);
-    m[strcspn(m, "\r\n")] = 0;
-    for(int i=0; i<strcspn(m, "\0"); i++)
-    {
-        m[i] = (char)toupper(m[i]);
-    }
+    leia_linha(m, 40);
 
     for(int i=0; i<qtd_de_carros; i++)
     {
         if(0 == strcmp(m, vetor[i].modelo))
         {
+            total++;
             printf("%s\n", vetor[i].placa);
         }
+    }
+    if(0 == total)
+    {
+        printf("Nenhum carro encontrado.\n");
     }
     printf("Pressione Enter para continuar...\n");
     getchar();
@@ -130,36 +181,63 @@ void lista_placas(carro *vetor, int qtd_de_carros)
 
 void mostra_intervalo(carro *vetor, int qtd_de_carros)
 {
+    hora inicio;
+    hora fim;
+    char buffer[40];
+    int total = 0;
+    char *tmp;
+
+    printf("Digite o inicio do intervalo: (formato hh:mm)\n");
+    leia_linha(buffer, 40);
+    inicio.h = (int) strtol(buffer, &tmp, 10);
+    inicio.m = (int) strtol(++tmp, NULL, 10);
+
+    printf("Digite o final do intervalo: (formato hh:mm)\n");
+    leia_linha(buffer, 40);
+    fim.h = (int) strtol(buffer, &tmp, 10);
+    fim.m = (int) strtol(++tmp, NULL, 10);
+
+    for(int i=0; i<qtd_de_carros; i++)
+    {
+        if((horacmp(vetor[i].entrada, inicio) >= 0) && (horacmp(vetor[i].entrada, fim) <= 0))
+        {
+            total++;
+        }
+    }
+    printf("Quantidade de carros no intervalo: %d\n", total);
+    printf("Pressione Enter para continuar...\n");
+    getchar();
 }
 
 void lista_todos(carro *vetor, int qtd_de_carros)
 {
     for(int i=0; i<qtd_de_carros; i++)
     {
-        printf("Carro %d:\nModelo: %s\nPlaca: %s\nHorario de Entrada: %02d:%02d\nHorario de Saida: %02d:%02d\n\n", i+1, vetor[i].modelo, vetor[i].placa, vetor[i].entrada.h, vetor[i].entrada.m, vetor[i].saida.h, vetor[i].saida.m);
+        print_carro(vetor, i);
+    }
     printf("Pressione Enter para continuar...\n");
     getchar();
-    }
 }
 
 void encontra_carro(carro *vetor, int qtd_de_carros)
 {
     char p[40];
+    int total = 0;
 
     printf("Digite a placa:\n");
-    fgets(p, 40, stdin);
-    p[strcspn(p, "\r\n")] = 0;
-    for(int i=0; i<strcspn(p, "\0"); i++)
-    {
-        p[i] = (char)toupper(p[i]);
-    }
+    leia_linha(p, 40);
 
     for(int i=0; i<qtd_de_carros; i++)
     {
         if(0 == strcmp(p, vetor[i].placa))
         {
-        printf("Carro %d:\nModelo: %s\nPlaca: %s\nHorario de Entrada: %02d:%02d\nHorario de Saida: %02d:%02d\n\n", i+1, vetor[i].modelo, vetor[i].placa, vetor[i].entrada.h, vetor[i].entrada.m, vetor[i].saida.h, vetor[i].saida.m);
+            total++;
+            print_carro(vetor, i);
         }
+    }
+    if(0 == total)
+    {
+        printf("Nenhum carro encontrado.\n");
     }
     printf("Pressione Enter para continuar...\n");
     getchar();
