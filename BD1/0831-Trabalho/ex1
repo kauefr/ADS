@@ -1,0 +1,38 @@
+#modelagem
+
+##entidades
+funcionario = {_cpf, nome}
+departamento = {_numero, nome, telefones(m)}
+
+##relacionamentos
+funcionario -n- trabalha -1- departamento
+funcionario -1- gerencia -1- departamento = {data_de_inicio}
+
+
+#mapeamento
+funcionario = {_cpf, nome, nro_depto}
+nro_depto = FK departamento(numero)
+departamento = {_numero, nome, cpf_gerente}
+cpf_gerente = FK funcionario(cpf)
+telefone = {_nro_depto, _numero}
+nro_depto = FK departamento(numero)
+
+
+#exemplo
+
+##funcionario
+_cpf nome nro_depto
+123  jão  1
+234  zé   2
+
+##departamento
+_numero nome cpf_gerente
+1       rh   123
+2       r&d  234
+
+##telefone
+_nro_depto _numero
+1          11111
+1          11112
+2          22222
+2          22223
