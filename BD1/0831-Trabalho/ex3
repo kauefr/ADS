@@ -1,0 +1,40 @@
+#modelagem
+
+##entidades
+departamento = {_codigo, nome}
+empregado = {_cpf, nome, salario}
+secretario = {login, senha}
+motorista = {cnh}
+engenheiro = {crea}
+processador_de_texto = {_codigo, nome}
+ramo_engenharia = {_codigo, nome}
+projeto = {_codigo, nome}
+
+##especializações
+{secretario, motorista, engenheiro} isa empregado (exclusiva, total)
+
+##relacionamentos
+empregado -n- lotado -1- departamento
+secretario -n- domina -m- processador_de_texto
+engenheiro -n- é_do_ramo -1- ramo_engenharia
+engenheiro -n- participa -m- projeto
+
+
+#mapeamento
+departamento = {_codigo, nome}
+secretario = {_cpf, nome, salario, cod_depto, login, senha}
+    cod_depto = FK departamento(codigo)
+motorista = {_cpf, nome, salario, cod_depto, cnh}
+    cod_depto = FK departamento(codigo)
+engenheiro = {_cpf, nome, salario, cod_depto, crea, cod_ramo}
+    cod_depto = FK departamento(codigo)
+    cod_ramo = FK ramo_engenharia(codigo)
+processador_de_texto = {_codigo, nome}
+ramo_engenharia = {_codigo, nome}
+projeto = {_codigo, nome}
+secretario_processador = {_cpf, _codigo}
+    cpf = FK secretario(cpf)
+    codigo = FK processador_de_texto(codigo)
+engenheiro_projeto = {_cpf, _codigo}
+    cpf = FK engenheiro(cpf)
+    codigo = FK projeto(codigo)

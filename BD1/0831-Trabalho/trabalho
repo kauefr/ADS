@@ -1,0 +1,21 @@
+IFSP SÃO CARLOS
+TRABALHO DE BANCO DE DADOS – Parte 1
+Professor: Rodrigo Henrique Ramos
+
+Este trabalho tem como base os exercícios da primeira prova de 2016A (com alterações mínimas). O trabalho é individual e deve ser feito à mão e entregue em papel almaço ou semelhante, seguindo as instruções de cada capítulo. 
+Não será tolerado a inserção de dados que remetam a preconceito e/ou palavras de baixo calão.
+Capítulo 1.
+Instruções: Fazer a modelagem e o mapeamento, represente o mapeamento como uma tabela, tal qual os exemplos em sala, insira valores fictícios que contemplem pelo menos 5 funcionários, 2 departamentos e 1 gerente.
+ 
+Exercício: Em um departamento que possui um nome, um número e vários telefones, trabalham vários funcionários que possuem cpf e nome. Cada departamento é gerenciado por no máximo um funcionário, é preciso saber a data de início de cada gerente (sem histórico). Faça a modelagem de tal forma a evitar campos nulos/vazios.
+
+Capítulo 2.
+Instruções - Parte 1: Fazer a modelagem e o mapeamento, represente o mapeamento como uma tabela, tal qual os exemplos em sala, insira valores fictícios com a entidade correntista recebendo a chave da entidade cartão magnético. Inserir 4 correntistas dos quais 2 possuem cartão de magnético e 2 dois não.
+Instruções – Parte 2: Fazer o mesmo da parte 1, porém a entidade cartão magnético recebe a chave da entidade correntista (não precisa repetir a modelagem)
+Exercício: Em um determinado banco, o correntista pode possuir um, e apenas um, cartão de crédito. Faça a modelagem de tal forma que não haja campos nulos/vazios.
+
+Capítulo 3.
+
+Instruções: Fazer a modelagem e o mapeamento. (não precisa inserir dados fictícios)
+Exercício: Em um departamento que possui nome e código estão lotados diversos empregados, cada empregado possui nome, cpf e salário. Os empregados podem ser: secretário, motorista e engenheiro. Vários secretários podem ter domínio de diversos processadores de texto (word, excel, writer, power point, etc...) É preciso saber quais processadores de textos cada secretário tem domínio. Sobre os processadores de texto é preciso saber o seu código e nome. É preciso saber login e senha de cada secretário. Sobre o motorista é preciso saber seu número de CNH. Sobre os engenheiros é preciso saber o CREA, também é preciso saber qual o ramo de atuação de cada engenheiro, é possível haver vários engenheiros de um mesmo ramo, mas não é possível acumular ramos, cada ramo possui código e nome. Vários engenheiros participam de vários projetos que possuem nome e código. O sistema não deve permitir que um empregado acumule funções.
+

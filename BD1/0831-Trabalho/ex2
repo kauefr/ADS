@@ -1,0 +1,44 @@
+#modelagem
+
+##entidades
+correntista = {_cpf, nome}
+cartão = {_numero, limite}
+
+##relacionamentos
+correntista -1- possui -1- cartão
+
+#mapeamento - parte 1
+correntista = {_cpf, nome, nro_cartao}
+nro_cartao = FK cartão(numero)
+cartão = {_numero, limite}
+
+#exemplo
+##correntista
+_cpf nome nro_cartao
+123  jão  1234
+234  zé   3425
+345  mari null
+456  ana  null
+
+##cartão
+_numero limite
+1234    1000
+3425    4000
+
+#mapeamento - parte 2
+correntista = {_cpf, nome}
+cartão = {_numero, limite, cpf_correntista}
+cpf_correntista = FK correntista(cpf)
+
+#exemplo
+##correntista
+_cpf nome 
+123  jão  
+234  zé   
+345  mari 
+456  ana  
+
+##cartão
+_numero limite cpf_correntista
+1234    1000   123
+3425    4000   234
