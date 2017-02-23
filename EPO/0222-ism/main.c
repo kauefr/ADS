@@ -7,21 +7,24 @@ typedef struct
     int comparacoes;
 } contadores;
 
-void swap(int *vetor, int a, int b, contadores *cont);
+void rotate(int *vetor, int a, int b, contadores *cont);
 void selection_sort(int *vetor, int tamanho, contadores *cont);
 void insertion_sort(int *vetor, int tamanho, contadores *cont);
 void merge_sort(int *vetor, int tamanho, contadores *cont);
 
+#define TAMANHO 10
+
 int main()
 {
     contadores c = {0, 0};
-    int vetor[5] = {2,1,4,3,5};
-    insertion_sort(vetor, 5, &c);
-    for(int i=0; i<5; i++)
+    int vetor[TAMANHO] = {9, 0, 7, 6, 5, 4, 3, 2, 1, 0};
+    insertion_sort(vetor, TAMANHO, &c);
+    for(int i=0; i<TAMANHO; i++)
     {
         printf("%d ", vetor[i]);
     }
     printf("\n");
+    printf("%d atribuicoes %d comparacoes\n", c.atribuicoes, c.comparacoes);
     return 0;
 }
 
@@ -37,20 +40,17 @@ void insertion_sort(int *vetor, int tamanho, contadores *cont)
         return;
     }
 
-    cont->comparacoes++;
-    if(vetor[0] > vetor[1])
+    for(int i=1; i<tamanho; i++)
     {
-        swap(vetor, 0, 1, cont);
-    }
-
-    for(int i=2; i<tamanho; i++)
-    {
-        for(j=0; j<i; j++)
+        for(int j=0; j<i; j++)
         {
-            cont->comparacoes++;
-            if(vetor[i])
+		cont->comparacoes++;
+		if(vetor[i]<vetor[j])
+		{
+			rotate(vetor, j, i, cont);
+			break;
+		}
         }
-        //procura o primeiro maior "x" na range [0,i), for(j=x; j<i; j++){swap(j,i)}
     }
 }
 
@@ -59,10 +59,13 @@ void merge_sort(int *vetor, int tamanho, contadores *cont)
 
 }
 
-void swap(int *vetor, int a, int b, contadores *cont)
+void rotate(int *vetor, int a, int b, contadores *cont)
 {
-    int c = vetor[a];
-    vetor[a] = vetor[b];
-    vetor[b] = c;
-    cont->atribuicoes+=2;
+    int c = vetor[b];
+    for(int i=b-1; i>=a; i--)
+    {
+	    vetor[i+1] = vetor[i];
+    }
+    vetor[a] = c;
+    cont->atribuicoes+=(b-a)+2;
 }
