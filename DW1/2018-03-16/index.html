@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Atividade 2018-03-16</title>
+	<style type="text/css">
+		label:hover {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+<div id="app">
+		<form>
+			<label for="input-1">Input 1</label>
+			<input type="text" name="input-1" class="my-input">
+			<label for="input-2">Input 2</label>
+			<input type="text" name="input-2" class="my-input">
+			<input type="button" value="Enviar" id="submit-button" onclick="Array.from(document.getElementsByClassName('my-input')).forEach(addP);">
+		</form>
+</body>
+<script type="text/javascript">
+	function addP(i) {
+		p = document.createElement('P');
+		p.innerHTML = i.value;
+		document.getElementById('app').appendChild(p);
+	}
+</script>
+</html>
