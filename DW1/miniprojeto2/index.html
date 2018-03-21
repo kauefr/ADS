@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Calculadora</title>
+</head>
+<body id="calc-page">
+	<div class="main">
+		<header>
+			<h1>Atividade de Javascript</h1>
+			<nav>
+				<a href="index.html">Calculadora</a>
+				<a href="cursos.html">Cursos</a>
+				<a href="tabela.html">Tabela</a>
+			</nav>
+		</header>
+		<section>
+			<div class="calc app">
+				<h2>Calculadora</h2>
+				<form class="clearfix">
+					<div id="calc-fields">
+						<input id="calc-result" type="text" name="result" placeholder="Resultado" readonly><br>
+						<input id="calc-n1" type="text" name="number-1" pattern="[0-9]*" placeholder="Número 1">
+						<input id="calc-n2" type="text" name="number-2" pattern="[0-9]*" placeholder="Número 2">
+					</div>
+					<div id="calc-controls">
+						<input id="add-btn" type="button" name="add" value="+"><input id="sub-btn" type="button" name="sub" value="-"><br>
+						<input id="mul-btn" type="button" name="mul" value="×"><input id="div-btn" type="button" name="div" value="÷">
+					</div>
+				</form>
+			</div>
+		</section>
+		<footer>Sistema desenvolvido por Kauê Rodrigues</footer>
+	</div>
+</body>
+<script type="text/javascript" src="js/script.js"></script>
+</html>

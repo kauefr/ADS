@@ -1,0 +1,174 @@
+/* Estilos gerais */
+
+* {
+	padding: 0;
+	border: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+body {
+	background: linear-gradient(to right, black, rgb(80, 80, 80), black);
+}
+
+.main {
+	width: 780px;
+	margin: 20px auto;
+	border-radius: 10px;
+	background-color: grey;
+}
+
+header, footer {
+	text-align: center;
+	padding: 7px;
+}
+
+h1 {
+	text-transform: uppercase; 
+	margin: 10px auto;
+}
+
+nav {
+	margin: 7px auto;
+}
+
+a {
+	display: inline-block;
+	text-align: center;
+	width: 200px;
+	height: 25px;
+	box-sizing: border-box;
+	border: 1px solid black;
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	font-weight: bold;
+}
+
+section {
+	background-color: silver;
+	padding: 10px 0;
+}
+
+.app {
+	width: 80%;
+	margin: 10px auto;
+	padding: 10px 0;
+	border: 1px solid grey;
+	border-radius: 10px;
+}
+
+h2 {
+	text-align: center;
+}
+
+/* Página Calculadora */
+
+#calc-fields {
+	display: inline-block;
+	padding: 1px;
+}
+
+#calc-fields * {
+	font-size: large;
+	height: 50px;
+	text-align: center;
+	margin: 5px;
+}
+
+#calc-controls {
+	display: inline-block;
+	padding: 1px;
+}
+
+
+#calc-controls input[type=button] {
+	height: 60px;
+	width: 60px;
+	margin: 1px;
+}
+
+form {
+	text-align: center;
+}
+
+/* Página Cursos */
+
+.courses {
+	text-align: center;
+}
+
+.lists > * {
+	display: inline-block;
+	width: 30%;
+	height: 100px;
+	margin: 10px 30px;
+}
+
+select {
+	width: 100%;
+	height: 100%;
+}
+
+option {
+	padding: 3px;
+}
+
+/* Página Tabela*/
+
+.table {
+	text-align: center;
+	background-color: whitesmoke;
+}
+
+table {
+	border-collapse: collapse;
+	width: 90%;
+	margin: 10px auto;
+}
+
+thead {
+	border-bottom: 2px solid black;
+}
+
+tbody > tr {
+	border-bottom: 1px solid grey;
+}
+
+tbody > *:hover {
+	color: grey;
+}
+
+td {
+	padding: 3px;
+}
+
+th {
+	padding: 5px;
+	font-size: large;
+}
+
+.table input {
+	width: 100px;
+	padding: 5px;
+	border: 1px solid black;
+	font-size: larger;
+}
+
+hr {
+	height: 2px;
+	width: 80%;
+	margin: 10px auto;
+	background-color: black;
+}
+
+textarea {
+	width: 90%;
+	height: 120px;
+	border: 1px solid black;
+	resize: vertical;
+	margin: 10px auto;
+}
