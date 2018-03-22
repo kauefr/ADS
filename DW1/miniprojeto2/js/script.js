@@ -26,11 +26,17 @@ function setup(id) {
 			});
 		}
 	else if (id == "table-page") {
-
+		/* Adciona um listener no botão Exportar para escrever o
+		CSV na <textarea>. */
+		document.querySelector('input[type="button"]').addEventListener(
+			'click', function(button) {
+				document.querySelector('textarea').value = 
+				tableToCSV(document.querySelector('table'));
+			});
 	}
 }
 
-/*Funções da Página Calculadora*/
+/* Funções da Página Calculadora */
 
 /* Lê os inputs da calculadora. */
 function getCalcInputs() {
@@ -78,7 +84,7 @@ function calcOperation(op) {
 	document.getElementById('calc-result').value = result;
 }
 
-/*Funções da Página Cursos*/
+/* Funções da Página Cursos */
 
 /* Encontra o elemento seguinte ao elemento a ser inserido no <select> */
 function getNextSibling(opt, container) {
@@ -89,4 +95,52 @@ function getNextSibling(opt, container) {
 		sib.getAttribute('data-order') >= opt.getAttribute('data-order'));
 }
 
-setup(document.getElementsByTagName('body')[0].id);
+/* Funções da Página Tabela */
+
+/* Gera uma string com o formato CSV a partir de uma <table> */
+function tableToCSV(table) {
+	var csv = "";
+	
+	/* Caracteres que precisam de tratamento especial. */
+	var mustEscapeCharacters = ['"', '\r', '\n', ';'];
+
+	/* Para cada linha da tabela: */
+	var rows = Array.from(table.rows);
+	for (var r = 0; r < rows.length; r++) {
+		/* Para cada célula: */
+		var cells = Array.from(rows[r].cells);
+		for (var c = 0; c < cells.length; c++) {
+			/* Lê o conteúdo da célula. */
+			var text = cells[c].innerText;
+			
+			/* Verifica se contém caracteres especiais. */ 
+			var mustEscape = mustEscapeCharacters.some(
+				function (c) {
+					return text.includes(c);
+				});
+
+			/* Se contiver, trata o campo com double-quotes. */
+			if (mustEscape) {
+				console.log(text);
+				text = text.replace(/"/g, '""');
+				text = '"'.concat(text, '"');
+			}
+
+			/* Concatena o campo na string resultado. */
+			csv += text;
+			/* Separador de campos. */
+			if (c < cells.length - 1) {
+				csv += ";";
+			}
+		}
+		/* Separador de linhas. */
+		if (r < rows.length - 1) {
+			csv += "\r\n";
+		}
+	}
+	return csv;
+}
+
+
+/* Roda o setup correto para a página atual. */
+setup(document.querySelector('body').id);
