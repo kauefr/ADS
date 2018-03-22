@@ -1,7 +1,8 @@
-/* Setup */
+/* Função Setup */
 
 function setup(id) {
-	if (id == "calc-page") {
+	switch(id) {
+		case 'calc-page':
 		/* Para cada botão, adciona um listener para o evento click
 		que realiza a operação adequada da calculadora. */
 		document.querySelectorAll('input[type="button"').forEach(
@@ -10,13 +11,13 @@ function setup(id) {
 					calcOperation(this.name);
 				})
 			});
-	}
-	else if (id == "courses-page") {
+		break;
+		case 'courses-page':
 		/* Para cada <option>, adciona um listener para o evento dblclick
 		que move o elemento para o outro <select>, com posição baseada
 		nos elementos presentes na lista alvo. */
-			document.querySelectorAll('option').forEach(
-				function(option) {
+		document.querySelectorAll('option').forEach(
+			function(option) {
 				option.addEventListener('dblclick', function() {
 					var targetId = this.parentNode.id == "list-available" ?
 					"list-chosen" : "list-available";
@@ -24,8 +25,8 @@ function setup(id) {
 					target.insertBefore(this, getNextSibling(this, target));
 				});
 			});
-		}
-	else if (id == "table-page") {
+		break;
+		case 'table-page':
 		/* Adciona um listener no botão Exportar para escrever o
 		CSV na <textarea>. */
 		document.querySelector('input[type="button"]').addEventListener(
@@ -33,6 +34,7 @@ function setup(id) {
 				document.querySelector('textarea').value = 
 				tableToCSV(document.querySelector('table'));
 			});
+		break;
 	}
 }
 
