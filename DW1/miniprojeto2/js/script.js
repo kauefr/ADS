@@ -107,23 +107,18 @@ function tableToCSV(table) {
 	var mustEscapeCharacters = ['"', '\r', '\n', ';'];
 
 	/* Para cada linha da tabela: */
-	var rows = Array.from(table.rows);
-	for (var r = 0; r < rows.length; r++) {
+	for (var r = 0; r < table.rows.length; r++) {
 		/* Para cada célula: */
-		var cells = Array.from(rows[r].cells);
-		for (var c = 0; c < cells.length; c++) {
+		for (var c = 0; c < table.rows[r].cells.length; c++) {
 			/* Lê o conteúdo da célula. */
-			var text = cells[c].innerText;
+			var text = table.rows[r].cells[c].innerText;
 			
 			/* Verifica se contém caracteres especiais. */ 
 			var mustEscape = mustEscapeCharacters.some(
-				function (c) {
-					return text.includes(c);
-				});
+				c => text.includes(c));
 
 			/* Se contiver, trata o campo com double-quotes. */
 			if (mustEscape) {
-				console.log(text);
 				text = text.replace(/"/g, '""');
 				text = '"'.concat(text, '"');
 			}
@@ -131,12 +126,12 @@ function tableToCSV(table) {
 			/* Concatena o campo na string resultado. */
 			csv += text;
 			/* Separador de campos. */
-			if (c < cells.length - 1) {
+			if (c < table.rows[r].cells.length - 1) {
 				csv += ";";
 			}
 		}
 		/* Separador de linhas. */
-		if (r < rows.length - 1) {
+		if (r < table.rows.length - 1) {
 			csv += "\r\n";
 		}
 	}
