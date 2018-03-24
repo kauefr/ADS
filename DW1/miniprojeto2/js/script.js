@@ -1,19 +1,18 @@
-/* Função Setup */
+/* Funções de Setup */
 
-function setup(id) {
-	switch(id) {
-		case 'calc-page':
-		/* Para cada botão, adciona um listener para o evento click
-		que realiza a operação adequada da calculadora. */
-		document.querySelectorAll('input[type="button"').forEach(
-			function(button) {
-				button.addEventListener('click', function() {
-					calcOperation(this.name);
-				})
-			});
-		break;
-		case 'courses-page':
-		/* Para cada <option>, adciona um listener para o evento dblclick
+function calcSetup() {
+	/* Para cada botão, adciona um listener para o evento click
+	que realiza a operação adequada da calculadora. */
+	document.querySelectorAll('input[type="button"').forEach(
+		function(button) {
+			button.addEventListener('click', function() {
+				calcOperation(this.name);
+			})
+		});
+}
+
+function coursesSetup() {
+	/* Para cada <option>, adciona um listener para o evento dblclick
 		que move o elemento para o outro <select>, com posição baseada
 		nos elementos presentes na lista alvo. */
 		document.querySelectorAll('option').forEach(
@@ -25,17 +24,16 @@ function setup(id) {
 					target.insertBefore(this, getNextSibling(this, target));
 				});
 			});
-		break;
-		case 'table-page':
-		/* Adciona um listener no botão Exportar para escrever o
-		CSV na <textarea>. */
-		document.querySelector('input[type="button"]').addEventListener(
-			'click', function(button) {
-				document.querySelector('textarea').value = 
-				tableToCSV(document.querySelector('table'));
-			});
-		break;
 	}
+
+function tableSetup() {
+	/* Adciona um listener no botão Exportar para escrever o
+	CSV na <textarea>. */
+	document.querySelector('input[type="button"]').addEventListener(
+		'click', function(button) {
+			document.querySelector('textarea').value = 
+			tableToCSV(document.querySelector('table'));
+		});
 }
 
 /* Funções da Página Calculadora */
@@ -137,7 +135,3 @@ function tableToCSV(table) {
 	}
 	return csv;
 }
-
-
-/* Roda o setup correto para a página atual. */
-setup(document.querySelector('body').id);
